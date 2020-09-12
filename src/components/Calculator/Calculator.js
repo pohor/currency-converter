@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Calculator() {
+    const [amount, setAmount] = useState(0);
+    const [currencyFrom, setCurrencyFrom] = useState("PLN");
+    const [currencyTo, setCurrencyTo] = useState("USD");
     return (
         <form>
             <div>
-                <input type="number" placeholder="Amount" onChange={(event) => console.log(event.target.value)}/>
+                <input type="number" placeholder="Amount" onChange={
+                    (event) => { setAmount(event.target.value) } }/>
             </div>
             <div>
                 <span>From:</span>
-                <select onChange={(event) => console.log(event.target.value)}>
+                <select value={currencyFrom} onChange={(event) => setCurrencyFrom(event.target.value)}>
                     <option value="USD">USD</option>
                     <option value="PLN">PLN</option>
                     <option value="GBP">GBP</option>
@@ -17,7 +21,7 @@ function Calculator() {
             </div>
             <div>
                 <span>To:</span>
-                <select onChange={(event) => console.log(event.target.value)}>
+                <select value={currencyTo} onChange={(event) => setCurrencyTo(event.target.value)}>
                     <option value="USD">USD</option>
                     <option value="PLN">PLN</option>
                     <option value="GBP">GBP</option>
@@ -25,7 +29,7 @@ function Calculator() {
                 </select>
             </div>
             <div>
-                <span>Result:</span>
+                <span>Result: {amount} </span>
             </div>
         </form>
         )
