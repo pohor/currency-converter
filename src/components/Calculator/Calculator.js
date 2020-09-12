@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Button} from "../Button";
 
 function Select({ currency, setCurrency }) {
+    const [currencies, setCurrencies] = useState([]);
+// runs two requests - TODO
+    useEffect(() => {
+        fetch(`https://api.ratesapi.io/api/latest?base=${"PLN"}`)
+            .then(response => response.json())
+            .then(data => {
+                setCurrencies(Object.keys(data.rates))
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }, [])
+
     return (
         <select value={currency} onChange={(event) => setCurrency(event.target.value)}>
-            <option value="USD">USD</option>
-            <option value="PLN">PLN</option>
-            <option value="GBP">GBP</option>
-            <option value="EUR">EUR</option>
+            {currencies.map((elem, index) => {
+                return <option key={elem + index} value={elem}>{elem}</option>
+            })}
         </select>
     )
 }
