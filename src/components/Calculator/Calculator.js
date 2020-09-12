@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 
+function Select({ currency, setCurrency }) {
+    return (
+        <select value={currency} onChange={(event) => setCurrency(event.target.value)}>
+            <option value="USD">USD</option>
+            <option value="PLN">PLN</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+        </select>
+    )
+}
+
 function Calculator() {
     const [amount, setAmount] = useState(0);
     const [currencyFrom, setCurrencyFrom] = useState("PLN");
@@ -12,21 +23,11 @@ function Calculator() {
             </div>
             <div>
                 <span>From:</span>
-                <select value={currencyFrom} onChange={(event) => setCurrencyFrom(event.target.value)}>
-                    <option value="USD">USD</option>
-                    <option value="PLN">PLN</option>
-                    <option value="GBP">GBP</option>
-                    <option value="EUR">EUR</option>
-                </select>
+                <Select currency={currencyFrom} setCurrency={setCurrencyFrom}/>
             </div>
             <div>
                 <span>To:</span>
-                <select value={currencyTo} onChange={(event) => setCurrencyTo(event.target.value)}>
-                    <option value="USD">USD</option>
-                    <option value="PLN">PLN</option>
-                    <option value="GBP">GBP</option>
-                    <option value="EUR">EUR</option>
-                </select>
+                <Select currency={currencyTo} setCurrency={setCurrencyTo}/>
             </div>
             <div>
                 <span>Result: {amount} </span>
