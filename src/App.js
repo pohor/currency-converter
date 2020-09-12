@@ -2,14 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button } from "./components/Button";
+import { Calculator } from "./components/Calculator";
 
 function App() {
   return (
     <div className="App">
       <p>Hello</p>
-        <Button>"Don't click me!"</Button>
-        <Button>Click me!</Button>
-        <Button>Third button</Button>
+        <Calculator/>
     </div>
   );
 }
