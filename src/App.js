@@ -1,18 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-function Button() {
-    return (
-        <button>Click me!</button>
-    );
-}
+import { Button } from "./components/Button";
 
 function App() {
   return (
     <div className="App">
       <p>Hello</p>
-        <Button/>
+        <Button>"Don't click me!"</Button>
+        <Button>Click me!</Button>
+        <Button>Third button</Button>
     </div>
   );
 }
